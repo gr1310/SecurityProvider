@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.10.35122.118
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ControllerModule", "Controller\ControllerModule.csproj", "{5E3E10BE-B671-462D-89F1-55B90B8AE8B7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ControllerModule", "Controller\ControllerModule.csproj", "{5E3E10BE-B671-462D-89F1-55B90B8AE8B7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SecurityProviderModule", "SecurityProviderModule\SecurityProviderModule.csproj", "{D3279085-E499-4B65-AAC4-0D414F11A3A9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UXModule", "UXModule\UXModule.csproj", "{B1C83683-F683-4536-825C-40DE486CB331}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{5E3E10BE-B671-462D-89F1-55B90B8AE8B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5E3E10BE-B671-462D-89F1-55B90B8AE8B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5E3E10BE-B671-462D-89F1-55B90B8AE8B7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D3279085-E499-4B65-AAC4-0D414F11A3A9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D3279085-E499-4B65-AAC4-0D414F11A3A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D3279085-E499-4B65-AAC4-0D414F11A3A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D3279085-E499-4B65-AAC4-0D414F11A3A9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B1C83683-F683-4536-825C-40DE486CB331}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B1C83683-F683-4536-825C-40DE486CB331}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B1C83683-F683-4536-825C-40DE486CB331}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B1C83683-F683-4536-825C-40DE486CB331}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
