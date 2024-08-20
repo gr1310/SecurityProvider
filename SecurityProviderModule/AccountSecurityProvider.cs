@@ -4,7 +4,7 @@
     {
         public bool Scan()
         {
-            return true;
+            return true; 
         }
     }
 }
