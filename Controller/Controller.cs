@@ -2,9 +2,9 @@
 
 namespace ControllerModule
 {
-    public class Controller
+    public class Controller : INotifier
     {
-        List<ISecurityProvider> CreateInstances()
+        public List<ISecurityProvider> CreateInstances()
         {
             List<ISecurityProvider> ActiveSecurityProviders= new List<ISecurityProvider>();
 
@@ -23,5 +23,11 @@ namespace ControllerModule
 
             return ActiveSecurityProviders;
         }
+
+        public void OnSecurityEvent(int Event)
+        {
+
+        }
+
     }
 }
