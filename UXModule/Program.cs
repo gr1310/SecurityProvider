@@ -1,9 +1,27 @@
-﻿using SecurityProviderModule;
+﻿/******************************************************************************
+* Filename    = Program.cs
+*
+* Author      = Garima Ranjan
+* 
+* Project     = SecurityProvider
+*
+* Description = Defines an user interface.
+*****************************************************************************/
+
+using SecurityProviderModule;
 
 namespace UXModule
 {
+
+    /// <summary>
+    /// User interaction program
+    /// </summary>
     public class Program
     {
+
+        /// <summary>
+        /// To scan using user defined provider
+        /// </summary>
         public void Main()
         {
             ISecurityProvider provider;
