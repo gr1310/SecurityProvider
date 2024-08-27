@@ -8,7 +8,7 @@
 * Description = Defines an interface for notification.
 *****************************************************************************/
 
-namespace ControllerModule
+namespace SecurityProviderModule
 {
     /// <summary>
     /// Declares a notifier that can send and receive messages.

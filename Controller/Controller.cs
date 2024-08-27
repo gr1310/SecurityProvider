@@ -28,15 +28,17 @@ namespace ControllerModule
 
             String SelectedEnv = "Home";
 
+            // To the various security providers, pass "this" instance as the notifier.
+
             if (SelectedEnv == "Org")
             {
-                ISecurityProvider antiVirusSecurity = new AntiVirusSecurityProvider();
-                ISecurityProvider accountSecurity = new AccountSecurityProvider();
+                ISecurityProvider antiVirusSecurity = new AntiVirusSecurityProvider(this);
+                ISecurityProvider accountSecurity = new AccountSecurityProvider(this);
             }
 
             else if (SelectedEnv == "Home")
             {
-                ISecurityProvider accountSecurity = new AccountSecurityProvider();
+                ISecurityProvider accountSecurity = new AccountSecurityProvider(this);
             }
 
             return ActiveSecurityProviders;
@@ -47,7 +49,10 @@ namespace ControllerModule
         /// </summary>
         public void OnSecurityEvent(int Event)
         {
-            // to notify user about security event
+            // Process the event
+
+            // To notify UX up the chain about security event, you would
+            // need another interface, or a pattern like MVVM
         }
 
     }

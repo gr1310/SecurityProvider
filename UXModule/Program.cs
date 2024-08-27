@@ -9,6 +9,7 @@
 *****************************************************************************/
 
 using SecurityProviderModule;
+using ControllerModule;
 
 namespace UXModule
 {
@@ -22,23 +23,14 @@ namespace UXModule
         /// <summary>
         /// To scan using user defined provider
         /// </summary>
-        public void Main()
+        public static void Main()
         {
-            ISecurityProvider provider;
-            String userInput = Console.ReadLine();
-
+            string? userInput = Console.ReadLine();
             while (userInput != "quit")
             {
-                if (userInput == "1")
-                {
-                    provider = new AntiVirusSecurityProvider();
-                    provider.Scan();
-                }
-                else if (userInput == "2")
-                {
-                    provider = new AccountSecurityProvider();
-                    provider.Scan();
-                }
+                ControllerModule.Controller controller = new ControllerModule.Controller();
+                List<ISecurityProvider> providers = controller.CreateInstances();
+                // ...
             }
         }
     }

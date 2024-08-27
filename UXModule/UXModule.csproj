@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Controller\ControllerModule.csproj" />
     <ProjectReference Include="..\SecurityProviderModule\SecurityProviderModule.csproj" />
   </ItemGroup>
 
