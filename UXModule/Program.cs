@@ -9,7 +9,6 @@ namespace UXModule
 
         public static void Main()
         {
-            // Create a controller instance
             _controller = new Controller();
 
             // Subscribe to the SecurityEventOccurred event
@@ -19,7 +18,7 @@ namespace UXModule
             List<ISecurityProvider> providers = CreateInstances();
 
             string? userInput;
-            do
+            while(true)
             {
                 Console.WriteLine("Enter a command (type 'scan' to perform scan, 'quit' to exit):");
                 userInput = Console.ReadLine();
@@ -37,16 +36,19 @@ namespace UXModule
                 {
                     Console.WriteLine("Unknown command. Try again.");
                 }
-
-            } while (userInput != "quit");
+                else
+                {
+                    break;
+                }
+            }
 
             Console.WriteLine("Exiting the program.");
         }
 
         private static void OnSecurityEventOccurred(int eventCode)
         {
-            // Print the security event result
-            Console.WriteLine($"Security event occurred with code: {eventCode}");
+            Console.WriteLine("Security Event Encountered!!");
+            Console.WriteLine($"Security event code: {eventCode}");
         }
 
         private static List<ISecurityProvider> CreateInstances()
