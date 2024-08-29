@@ -18,8 +18,14 @@ namespace ControllerModule
     /// </summary>
     public class Controller : ICommunicator
     {
-
+        /// <summary>
+        /// List of all subscribers
+        /// </summary>
         private List<ISubscriber> _subscribers = new List<ISubscriber>();
+
+        /// <summary>
+        /// Adding subscriber
+        /// </summary>
         public void Subscribe(ISubscriber subscriber)
         {
             if (!_subscribers.Contains(subscriber))
@@ -28,6 +34,9 @@ namespace ControllerModule
             }
         }
 
+        /// <summary>
+        /// Removing subscriber
+        /// </summary>
         public void Unsubscribe(ISubscriber subscriber)
         {
             if (_subscribers.Contains(subscriber))
@@ -36,6 +45,9 @@ namespace ControllerModule
             }
         }
 
+        /// <summary>
+        /// Sending information to UX module, recieved from Security Provider Module
+        /// </summary>
         public void Notify(int eventCode)
         {
             foreach (var subscriber in _subscribers)

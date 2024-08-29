@@ -1,5 +1,5 @@
 ﻿/******************************************************************************
-* Filename    = INotifier.cs
+* Filename    = ISubscriber.cs
 *
 * Author      = Garima Ranjan
 * 

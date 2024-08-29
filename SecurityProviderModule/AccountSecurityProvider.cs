@@ -17,12 +17,9 @@ namespace SecurityProviderModule
     public class AccountSecurityProvider : ISecurityProvider
     {
 
-        //private INotifier _notifier;
-
         private ICommunicator _communicator;
         public AccountSecurityProvider(ICommunicator communicator)
         {
-            //_notifier = notifier;
             _communicator = communicator;
 
             FileSystemWatcher watcher = new FileSystemWatcher();

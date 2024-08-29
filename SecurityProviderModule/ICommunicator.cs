@@ -1,5 +1,5 @@
 ﻿/******************************************************************************
-* Filename    = INotifier.cs
+* Filename    = ICommunicator.cs
 *
 * Author      = Garima Ranjan
 * 
