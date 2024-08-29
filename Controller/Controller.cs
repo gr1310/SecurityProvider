@@ -16,10 +16,33 @@ namespace ControllerModule
     /// <summary>
     /// Controller for Providers
     /// </summary>
-    public class Controller : INotifier
+    public class Controller : ICommunicator
     {
 
-        public event Action<int> SecurityEventOccurred;
+        private List<ISubscriber> _subscribers = new List<ISubscriber>();
+        public void Subscribe(ISubscriber subscriber)
+        {
+            if (!_subscribers.Contains(subscriber))
+            {
+                _subscribers.Add(subscriber);
+            }
+        }
+
+        public void Unsubscribe(ISubscriber subscriber)
+        {
+            if (_subscribers.Contains(subscriber))
+            {
+                _subscribers.Remove(subscriber);
+            }
+        }
+
+        public void Notify(int eventCode)
+        {
+            foreach (var subscriber in _subscribers)
+            {
+                subscriber.OnSecurityEvent(eventCode);
+            }
+        }
 
         /// <summary>
         /// Handler for Active Providers
@@ -28,7 +51,7 @@ namespace ControllerModule
         {
             List<ISecurityProvider> ActiveSecurityProviders= new List<ISecurityProvider>();
 
-            String SelectedEnv = "Home";
+            String SelectedEnv = "Org";
 
             // To the various security providers, pass "this" instance as the notifier.
 
@@ -36,49 +59,17 @@ namespace ControllerModule
             {
                 ISecurityProvider antiVirusSecurity = new AntiVirusSecurityProvider(this);
                 ISecurityProvider accountSecurity = new AccountSecurityProvider(this);
+                ActiveSecurityProviders.Add(accountSecurity);
+                ActiveSecurityProviders.Add(antiVirusSecurity);
             }
 
             else if (SelectedEnv == "Home")
             {
                 ISecurityProvider accountSecurity = new AccountSecurityProvider(this);
+                ActiveSecurityProviders.Add(accountSecurity);
             }
 
             return ActiveSecurityProviders;
-        }
-
-        /// <summary>
-        /// Security Event notifier
-        /// </summary>
-        public void OnSecurityEvent(int Event)
-        {
-            // Process the event
-
-            // To notify UX up the chain about security event, you would
-            // need another interface, or a pattern like MVVM
-
-
-            switch (Event)
-            {
-                case 3:
-                    // Handle file change event
-                    Console.WriteLine("Security Event: File changed.");
-                    // You could add additional logic here, like logging the event
-                    break;
-
-                case 4:
-                    // Handle file creation event
-                    Console.WriteLine("Security Event: File created.");
-                    // You could add additional logic here, like logging the event
-                    break;
-
-                default:
-                    // Handle unknown or other events
-                    Console.WriteLine($"Security Event: Unknown event code {Event}.");
-                    break;
-            }
-
-            // Notify subscribers about the event (e.g., UI components)
-            SecurityEventOccurred?.Invoke(Event);
         }
 
     }
