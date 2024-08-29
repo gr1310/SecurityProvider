@@ -24,9 +24,15 @@ namespace SecurityProviderModule
             _notifier = notifier;
 
             FileSystemWatcher watcher = new FileSystemWatcher();
-            watcher.Path = @"C:\Users\Public\Documents";
+            watcher.Path = @"C:\Users\Garima Ranjan\Documents";
             watcher.NotifyFilter = NotifyFilters.LastAccess | NotifyFilters.LastWrite | NotifyFilters.FileName | NotifyFilters.DirectoryName;
+
+            // Subscribe to events
             watcher.Changed += new FileSystemEventHandler(OnChanged);
+            watcher.Created += new FileSystemEventHandler(OnChanged);
+
+            // Start monitoring
+            watcher.EnableRaisingEvents = true;
         }
 
         /// <summary>

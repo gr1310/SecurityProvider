@@ -19,6 +19,8 @@ namespace ControllerModule
     public class Controller : INotifier
     {
 
+        public event Action<int> SecurityEventOccurred;
+
         /// <summary>
         /// Handler for Active Providers
         /// </summary>
@@ -53,6 +55,30 @@ namespace ControllerModule
 
             // To notify UX up the chain about security event, you would
             // need another interface, or a pattern like MVVM
+
+
+            switch (Event)
+            {
+                case 3:
+                    // Handle file change event
+                    Console.WriteLine("Security Event: File changed.");
+                    // You could add additional logic here, like logging the event
+                    break;
+
+                case 4:
+                    // Handle file creation event
+                    Console.WriteLine("Security Event: File created.");
+                    // You could add additional logic here, like logging the event
+                    break;
+
+                default:
+                    // Handle unknown or other events
+                    Console.WriteLine($"Security Event: Unknown event code {Event}.");
+                    break;
+            }
+
+            // Notify subscribers about the event (e.g., UI components)
+            SecurityEventOccurred?.Invoke(Event);
         }
 
     }
