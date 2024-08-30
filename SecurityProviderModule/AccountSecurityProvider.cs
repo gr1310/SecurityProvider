@@ -18,11 +18,12 @@ namespace SecurityProviderModule
     {
 
         private ICommunicator _communicator;
+        public FileSystemWatcher watcher;
         public AccountSecurityProvider(ICommunicator communicator)
         {
             _communicator = communicator;
 
-            FileSystemWatcher watcher = new FileSystemWatcher();
+            watcher = new FileSystemWatcher();
             watcher.Path = @"C:\Users\Garima Ranjan\Documents";
             watcher.NotifyFilter = NotifyFilters.LastAccess | NotifyFilters.LastWrite | NotifyFilters.FileName | NotifyFilters.DirectoryName;
 

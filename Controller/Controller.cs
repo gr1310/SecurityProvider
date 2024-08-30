@@ -28,10 +28,7 @@ namespace ControllerModule
         /// </summary>
         public void Subscribe(ISubscriber subscriber)
         {
-            if (!_subscribers.Contains(subscriber))
-            {
-                _subscribers.Add(subscriber);
-            }
+            _subscribers.Add(subscriber);
         }
 
         /// <summary>
@@ -39,10 +36,7 @@ namespace ControllerModule
         /// </summary>
         public void Unsubscribe(ISubscriber subscriber)
         {
-            if (_subscribers.Contains(subscriber))
-            {
-                _subscribers.Remove(subscriber);
-            }
+            _subscribers.Remove(subscriber);
         }
 
         /// <summary>
