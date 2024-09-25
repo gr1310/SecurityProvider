@@ -17,13 +17,13 @@ namespace SecurityProviderModule
     public class AccountSecurityProvider : ISecurityProvider
     {
 
-        private INotifier _notifier;
-
-        public AccountSecurityProvider(INotifier notifier)
+        private ICommunicator _communicator;
+        public FileSystemWatcher watcher;
+        public AccountSecurityProvider(ICommunicator communicator)
         {
-            _notifier = notifier;
+            _communicator = communicator;
 
-            FileSystemWatcher watcher = new FileSystemWatcher();
+            watcher = new FileSystemWatcher();
             watcher.Path = @"C:\Users\Garima Ranjan\Documents";
             watcher.NotifyFilter = NotifyFilters.LastAccess | NotifyFilters.LastWrite | NotifyFilters.FileName | NotifyFilters.DirectoryName;
 
@@ -40,6 +40,7 @@ namespace SecurityProviderModule
         /// </summary>
         public bool Scan()
         {
+            Console.WriteLine("Account Security Provider Scan on Documents ");
             return true;
         }
 
@@ -50,13 +51,13 @@ namespace SecurityProviderModule
             {
                 case WatcherChangeTypes.Changed:
                     {
-                        _notifier?.OnSecurityEvent(3);
+                        _communicator?.Notify(3);
                         break;
                     }
 
                 case WatcherChangeTypes.Created:
                     {
-                        _notifier?.OnSecurityEvent(4);
+                        _communicator?.Notify(4);
                         break;
                     }
 

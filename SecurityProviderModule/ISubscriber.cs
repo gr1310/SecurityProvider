@@ -1,20 +1,20 @@
 ﻿/******************************************************************************
-* Filename    = INotifier.cs
+* Filename    = ISubscriber.cs
 *
 * Author      = Garima Ranjan
 * 
 * Project     = SecurityProvider
 *
-* Description = Defines an interface for notification.
+* Description = Defines an interface for recieving message.
 *****************************************************************************/
 
 namespace SecurityProviderModule
 {
     /// <summary>
-    /// Declares a notifier that can send and receive messages.
+    /// Declares a subscriber that can receive messages on UX.
     /// </summary>
-    public interface INotifier
+    public interface ISubscriber
     {
-        public void OnSecurityEvent(int Event);
+        void OnSecurityEvent(int Event);
     }
 }

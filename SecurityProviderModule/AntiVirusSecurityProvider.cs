@@ -17,13 +17,14 @@ namespace SecurityProviderModule
     public class AntiVirusSecurityProvider : ISecurityProvider
     {
 
-        private INotifier _notifier;
+        private ICommunicator _communicator;
+        public FileSystemWatcher watcher;
 
-        public AntiVirusSecurityProvider(INotifier notifier)
+        public AntiVirusSecurityProvider(ICommunicator communicator)
         {
-            _notifier = notifier;
+            _communicator = communicator;
 
-            FileSystemWatcher watcher = new FileSystemWatcher();
+            watcher = new FileSystemWatcher();
             watcher.Path = @"C:\Users\Garima Ranjan\Desktop";
             watcher.NotifyFilter = NotifyFilters.LastAccess | NotifyFilters.LastWrite | NotifyFilters.FileName | NotifyFilters.DirectoryName;
             
@@ -40,6 +41,7 @@ namespace SecurityProviderModule
         /// </summary>
         public bool Scan()
         {
+            Console.WriteLine("Anti Virus Security Provider Scan on Desktop ");
             return true;
         }
 
@@ -50,13 +52,13 @@ namespace SecurityProviderModule
             {
                 case WatcherChangeTypes.Changed:
                     {
-                        _notifier?.OnSecurityEvent(1);
+                        _communicator?.Notify(1);
                         break;
                     }
 
                 case WatcherChangeTypes.Created:
                     {
-                        _notifier?.OnSecurityEvent(2);
+                        _communicator?.Notify(2);
                         break;
                     }
 
